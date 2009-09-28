@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3E50FE12-8E16-41BB-97EA-CA0B3CE5BCEB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NJaneScript.Base</RootNamespace>
+    <AssemblyName>NJaneScriptBase</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\NJaneScriptBase.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\NJaneScriptBase.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PluginContract\PluginAttributes.cs" />
+    <Compile Include="PluginContract\PluginInterfaces.cs" />
+    <Compile Include="Wrapper\DatOut.cs" />
+    <Compile Include="Wrapper\_WrapperManager.cs" />
+    <Compile Include="Wrapper\_Attributes.cs" />
+    <Compile Include="Wrapper\CategoryList.cs" />
+    <Compile Include="Wrapper\Board.cs" />
+    <Compile Include="Wrapper\Category.cs" />
+    <Compile Include="Wrapper\ThreadFinder.cs" />
+    <Compile Include="Wrapper\Strings.cs" />
+    <Compile Include="Wrapper\ReferredList.cs" />
+    <Compile Include="Wrapper\RangeList.cs" />
+    <Compile Include="Wrapper\PopupTargetInfo.cs" />
+    <Compile Include="Wrapper\ViewList.cs" />
+    <Compile Include="Wrapper\MenuItem.cs" />
+    <Compile Include="Wrapper\ResItem.cs" />
+    <Compile Include="Wrapper\NamedVariant.cs" />
+    <Compile Include="Wrapper\CosSim.cs" />
+    <Compile Include="Wrapper\ThreadItem.cs" />
+    <Compile Include="Wrapper\Edit.cs" />
+    <Compile Include="Wrapper\JaneScript.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wrapper\_Interop.cs" />
+    <Compile Include="Wrapper\_Utils.cs" />
+    <Compile Include="Wrapper\ViewItem.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

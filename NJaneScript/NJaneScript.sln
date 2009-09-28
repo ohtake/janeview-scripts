@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJaneScriptBase", "NJaneScriptBase\NJaneScriptBase.csproj", "{3E50FE12-8E16-41BB-97EA-CA0B3CE5BCEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJaneScriptPluginManager", "NJaneScriptPluginManager\NJaneScriptPluginManager.csproj", "{674A5ECD-A383-41C7-B58A-A8E416F93CF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJSP_Test1", "NJSP_Test1\NJSP_Test1.csproj", "{9CF8F77A-9870-4AA9-A49D-1DD6D43B02BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJSP_Test2", "NJSP_Test2\NJSP_Test2.csproj", "{45FD28A5-46D0-402C-8A77-15F5124C82C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E50FE12-8E16-41BB-97EA-CA0B3CE5BCEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E50FE12-8E16-41BB-97EA-CA0B3CE5BCEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E50FE12-8E16-41BB-97EA-CA0B3CE5BCEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E50FE12-8E16-41BB-97EA-CA0B3CE5BCEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{674A5ECD-A383-41C7-B58A-A8E416F93CF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{674A5ECD-A383-41C7-B58A-A8E416F93CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{674A5ECD-A383-41C7-B58A-A8E416F93CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{674A5ECD-A383-41C7-B58A-A8E416F93CF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CF8F77A-9870-4AA9-A49D-1DD6D43B02BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CF8F77A-9870-4AA9-A49D-1DD6D43B02BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CF8F77A-9870-4AA9-A49D-1DD6D43B02BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CF8F77A-9870-4AA9-A49D-1DD6D43B02BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45FD28A5-46D0-402C-8A77-15F5124C82C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45FD28A5-46D0-402C-8A77-15F5124C82C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45FD28A5-46D0-402C-8A77-15F5124C82C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45FD28A5-46D0-402C-8A77-15F5124C82C7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
