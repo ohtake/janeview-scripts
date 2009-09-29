@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJSP_Test2", "NJSP_Test2\NJ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJSP_ViewListEx", "NJSP_ViewListEx\NJSP_ViewListEx.csproj", "{AF66719D-A15D-47EB-ABDC-E06A1126E9E3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{8579BC3F-C0FA-4022-8B9F-024193988351}"
+	ProjectSection(SolutionItems) = preProject
+		AggregateBinaries.cmd = AggregateBinaries.cmd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
