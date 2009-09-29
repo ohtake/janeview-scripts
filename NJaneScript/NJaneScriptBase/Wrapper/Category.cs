@@ -103,8 +103,7 @@ namespace NJaneScript.Wrapper {
 		/// スクリプトからの参照がなくなってもObjは保持され、再度スクリプトから参照すれば値を取得可能
 		/// ただし、板一覧の更新などによりCategoryの実体が再作成された場合はObjも失われる。
 		/// </summary>
-		[WrapperNotRecommendedJaneScriptApi]
-		[JaneScriptApi]
+		[JaneScriptApi(Incompatible=true)]
 		public object Obj {
 			get {
 				return base.InvokeGet("Obj");

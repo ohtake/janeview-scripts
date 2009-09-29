@@ -35,8 +35,8 @@ namespace NJaneScript.Wrapper {
 		/// <param name="Str">Subjectと比較する文字列</param>
 		/// <returns>SubjectとStrの類似度</returns>
 		[JaneScriptApi]
-		public float Evaluate(string Str) {
-			return (float)base.InvokeMethod("Evaluate", Str);
+		public double Evaluate(string Str) {
+			return (double)base.InvokeMethod("Evaluate", Str);
 		}
 	}
 }

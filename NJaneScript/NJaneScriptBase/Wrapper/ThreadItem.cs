@@ -91,7 +91,7 @@ namespace NJaneScript.Wrapper {
 		/// スレの最終レスの時刻値
 		/// 最終レスが未定義値の場合は0。
 		/// </summary>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified = true)]
 		public DateTime? FinalRes {
 			get {
 				double val = (double)base.InvokeGet("FinalRes");
@@ -105,7 +105,7 @@ namespace NJaneScript.Wrapper {
 		/// </summary>
 		/// <param name="Index">あぼーんの状態を取得するレスのレス番号</param>
 		/// <returns>レスのあぼーん状態</returns>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified = true)]
 		public AboneType GetAbone(int Index) {
 			return (AboneType)(int)base.InvokeMethod("GetAbone", Index);
 		}
@@ -190,7 +190,7 @@ namespace NJaneScript.Wrapper {
 		/// スレの最終取得の時刻値
 		/// 最終レスが未定義値の場合は0。
 		/// </summary>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified = true)]
 		public DateTime? LastGot {
 			get {
 				double val = (double)base.InvokeGet("LastGot");
@@ -214,7 +214,7 @@ namespace NJaneScript.Wrapper {
 		/// Action：○　LateCall:○　Command:○
 		/// スレの最終書き込みの時刻値。未定義値の場合は0。
 		/// </summary>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified = true)]
 		public DateTime? LastWrote {
 			get {
 				double val = (double)base.InvokeGet("LastWrote");
@@ -280,8 +280,7 @@ namespace NJaneScript.Wrapper {
 		/// ただし、スレは板の更新時に参照がなければ削除→再作成されるので、ThreadItemオブジェクトから
 		/// 参照されていないスレが保持するObjはそのスレが所属する板の更新により高い確率で失われる。
 		/// </summary>
-		[WrapperNotRecommendedJaneScriptApi]
-		[JaneScriptApi]
+		[JaneScriptApi(Incompatible=true)]
 		public object Obj {
 			get {
 				return base.InvokeGet("Obj");
@@ -313,7 +312,7 @@ namespace NJaneScript.Wrapper {
 		/// </summary>
 		/// <param name="Index">あぼーんの状態を取得するレスのレス番号</param>
 		/// <param name="Value">レスに設定するあぼーん状態</param>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified = true)]
 		public void SetAbone(int Index, AboneType Value) {
 			base.InvokeMethod("SetAbone", Index, (int)Value);
 		}
@@ -335,9 +334,9 @@ namespace NJaneScript.Wrapper {
 		/// スレのURL。レス数指定などは付かない。
 		/// </summary>
 		[JaneScriptApi]
-		public string URL {
+		public Uri URL {
 			get {
-				return (string)base.InvokeGet("URL");
+				return new Uri((string)base.InvokeGet("URL"));
 			}
 		}
 		/// <summary>

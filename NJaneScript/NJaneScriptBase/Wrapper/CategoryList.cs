@@ -79,8 +79,7 @@ namespace NJaneScript.Wrapper {
 		/// <para>ただし、現在のJaneViewでは複数のCategoryListが存在することはないので、実質的にはグローバル
 		/// 変数に代入するのと変わらない。</para>
 		/// </summary>
-		[WrapperNotRecommendedJaneScriptApi]
-		[JaneScriptApi]
+		[JaneScriptApi(Incompatible=true)]
 		public object Obj {
 			get {
 				return base.InvokeGet("Obj");

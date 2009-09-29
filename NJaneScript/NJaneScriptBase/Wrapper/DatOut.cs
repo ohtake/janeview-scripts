@@ -84,7 +84,7 @@ namespace NJaneScript.Wrapper {
 		/// <param name="EndLine">表示したいレス範囲の最後のレス番(※レス番がEndLineのレスは表示対象に含む)</param>
 		/// <param name="AboneLevel">　表示で使用するあぼーん表示形式を指定する。メニューのスレ→「ローカルあぼーん表示の変更」と
 		/// 同等の表示設定が可能</param>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified=true)]
 		public void WriteThread(ThreadItem Thread, int StartLine, int EndLine, AboneLevel AboneLevel) {
 			base.InvokeMethod("WriteThread", Thread.ComObject, StartLine, EndLine, (int)AboneLevel);
 		}

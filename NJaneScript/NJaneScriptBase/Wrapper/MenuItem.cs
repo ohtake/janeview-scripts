@@ -168,11 +168,12 @@ namespace NJaneScript.Wrapper {
 		/// targetObject メニューがポップアップした状況に関する情報を保持したPopupTargetInfoオブジェクト
 		/// </remarks>
 		/// <seealso cref="PopupTargetInfo"/>
-		[JaneScriptApi]
 		public Action<MenuItem, PopupTargetInfo> OnClick {
+			[JaneScriptApi(Modified = true, Incompatible = true)]
 			get {
 				throw new NotImplementedException();
 			}
+			[JaneScriptApi(Modified=true)]
 			set {
 				MenuClickHandlerContainer container = new MenuClickHandlerContainer(value);
 				base.InvokeSet("OnClick", WrapperManager.Proxy.CreateMenuClickHandler(container));

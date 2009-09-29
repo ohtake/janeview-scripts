@@ -93,8 +93,7 @@ namespace NJaneScript.Wrapper {
 		/// スクリプトからの参照がなくなっても、実体のスレビューが閉じられていなければObjの内容は
 		/// 保持され、再度スクリプトから参照すれば値を取得できる
 		/// </summary>
-		[WrapperNotRecommendedJaneScriptApi]
-		[JaneScriptApi]
+		[JaneScriptApi(Incompatible=true)]
 		public object Obj {
 			get {
 				return base.InvokeGet("Obj");

@@ -77,7 +77,7 @@ namespace NJaneScript.Wrapper {
 		/// Action：○　LateCall:○　Command:○
 		/// メニューをクリックした場所に関連するオブジェクトを保持する
 		/// </summary>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified=true)]
 		public ComWrapperBase PopupObject {
 			get {
 				object ret = base.InvokeGet("PopupObject");

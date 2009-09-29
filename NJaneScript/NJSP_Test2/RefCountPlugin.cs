@@ -72,7 +72,7 @@ namespace NJSP_Test2 {
 				group rr.ResNumber by rr.RefCount into g
 				orderby g.Key descending
 				select g;
-			string threadUri = thread.URL;
+			Uri threadUri = thread.URL;
 			Util.WriteToNewView(js, "レス数でグループ化", "レス数でグループ化: " + thread.Title, (DatOut datout) => {
 				foreach (var g in groups) {
 					datout.WriteHTML(string.Format("<dt>{0} ({1})</dt>", g.Key, g.Count()));

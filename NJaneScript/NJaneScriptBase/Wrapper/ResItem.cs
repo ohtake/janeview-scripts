@@ -44,7 +44,7 @@ namespace NJaneScript.Wrapper {
 		/// Action：○　LateCall:○　Command:○
 		/// 保持しているレスの投稿時刻
 		/// </summary>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified=true)]
 		public DateTime DateValue {
 			get {
 				return new DateTime((long)((double)base.InvokeGet("DateValue") / 10), DateTimeKind.Utc);
@@ -124,10 +124,10 @@ namespace NJaneScript.Wrapper {
 		/// Action：○　LateCall:○　Command:○
 		/// 保持しているレスが属するスレのURL(レス番は付かない)
 		/// </summary>
-		[JaneScriptApi]
-		public string URL {
+		[JaneScriptApi(Modified=true)]
+		public Uri URL {
 			get {
-				return (string)base.InvokeGet("URL");
+				return new Uri((string)base.InvokeGet("URL"));
 			}
 		}
 	}

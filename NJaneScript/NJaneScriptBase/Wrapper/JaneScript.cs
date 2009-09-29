@@ -35,7 +35,7 @@ namespace NJaneScript.Wrapper {
 		///		その他: その日数だけ新たなレスがなければ自動消去</param>
 		/// <returns>正常に登録された場合はtrue
 		/// すでに登録されていたり、空白文字列を登録しようとした場合はfalse</returns>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified = true)]
 		public bool AddNgName(string Item, AboneType AboneType, int LifeSpan) {
 			return (bool)base.InvokeMethod("AddNgName", Item, (int)AboneType, LifeSpan);
 		}
@@ -55,7 +55,7 @@ namespace NJaneScript.Wrapper {
 		///		その他: その日数だけ新たなレスがなければ自動消去</param>
 		/// <returns>正常に登録された場合はtrue
 		/// すでに登録されていたり、空白文字列を登録しようとした場合はfalse</returns>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified = true)]
 		public bool AddNgMail(string Item, AboneType AboneType, int LifeSpan) {
 			return (bool)base.InvokeMethod("AddNgMail", Item, (int)AboneType, LifeSpan);
 		}
@@ -75,7 +75,7 @@ namespace NJaneScript.Wrapper {
 		///		その他: その日数だけ新たなレスがなければ自動消去</param>
 		/// <returns>正常に登録された場合はtrue
 		/// すでに登録されていたり、空白文字列を登録しようとした場合はfalse</returns>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified = true)]
 		public bool AddNgId(string Item, AboneType AboneType, int LifeSpan) {
 			return (bool)base.InvokeMethod("AddNgId", Item, (int)AboneType, LifeSpan);
 		}
@@ -95,7 +95,7 @@ namespace NJaneScript.Wrapper {
 		///		その他: その日数だけ新たなレスがなければ自動消去</param>
 		/// <returns>正常に登録された場合はtrue
 		/// すでに登録されていたり、空白文字列を登録しようとした場合はfalse</returns>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified = true)]
 		public bool AddNgWord(string Item, AboneType AboneType, int LifeSpan) {
 			return (bool)base.InvokeMethod("AddNgWord", Item, (int)AboneType, LifeSpan);
 		}
@@ -136,7 +136,7 @@ namespace NJaneScript.Wrapper {
 		/// 板を閉じる
 		/// </summary>
 		/// <param name="Item">閉じる対象の板</param>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified=true)]
 		public void Close(Board Item) {
 			base.InvokeMethod("Close", Item.ComObject);
 		}
@@ -146,7 +146,7 @@ namespace NJaneScript.Wrapper {
 		/// スレを閉じる
 		/// </summary>
 		/// <param name="Item">閉じる対象のスレ</param>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified = true)]
 		public void Close(ThreadItem Item) {
 			base.InvokeMethod("Close", Item.ComObject);
 		}
@@ -155,7 +155,7 @@ namespace NJaneScript.Wrapper {
 		/// スレを閉じる
 		/// </summary>
 		/// <param name="Item">閉じる対象のスレ</param>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified = true)]
 		public void Close(ViewItem Item) {
 			base.InvokeMethod("Close", Item.ComObject);
 		}
@@ -174,7 +174,7 @@ namespace NJaneScript.Wrapper {
 		/// Action：○　LateCall:○　Command:○
 		/// グローバル座標系でのマウスカーソルの位置を取得する
 		/// </summary>
-		/// <returns>カーソル位置情報を格納したNamedVariant(オブジェクトリファレンス参照)
+		/// <returns>カーソル位置情報を格納したNamedVariant
 		/// NamedVariant.X カーソルのX座標
 		/// NamedVariant.Y カーソルのY座標</returns>
 		[JaneScriptApi]
@@ -246,7 +246,7 @@ namespace NJaneScript.Wrapper {
 		/// 例: function CalleeFunction (funcObject) {};
 		/// Funcの呼び出しはアイドルループなどJaneのシステムがメッセージ処理をするタイミングで行われる</param>
 		/// <param name="funcParam">Funcに渡す引数</param>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified = true)]
 		public void LateCall(Action<object> Func, object funcParam) {
 			LateCallCallbackContainer container = new LateCallCallbackContainer(Func);
 			base.InvokeMethod("LateCall", WrapperManager.Proxy.CreateLateCallCallback(container), funcParam);
@@ -289,7 +289,7 @@ namespace NJaneScript.Wrapper {
 		/// そうでなければ新しいタブで開く</param>
 		/// <param name="Relative">新規タブで開く場合、Relativeがtrueならば現在のアクティブタブの隣に開かれる</param>
 		/// <param name="BackGround">開いたタブを選択状態にしない</param>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified = true)]
 		public void Open(string URL, int Number, OpenOperation Operation, bool NewTab, bool Relative, bool BackGround) {
 			base.InvokeMethod("Open", URL, Number, (int)Operation, NewTab, Relative, BackGround);
 		}
@@ -306,7 +306,7 @@ namespace NJaneScript.Wrapper {
 		/// そうでなければ新しいタブで開く</param>
 		/// <param name="Relative">新規タブで開く場合、Relativeがtrueならば現在のアクティブタブの隣に開かれる</param>
 		/// <param name="BackGround">開いたタブを選択状態にしない</param>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified = true)]
 		public void Open(ThreadItem Thread, int Number, OpenOperation Operation, bool NewTab, bool Relative, bool BackGround) {
 			base.InvokeMethod("Open", Thread.ComObject, Number, (int)Operation, NewTab, Relative, BackGround);
 		}
@@ -322,7 +322,7 @@ namespace NJaneScript.Wrapper {
 		/// そうでなければ新しいタブで開く</param>
 		/// <param name="Relative">新規タブで開く場合、Relativeがtrueならば現在のアクティブタブの隣に開かれる</param>
 		/// <param name="BackGround">開いたタブを選択状態にしない</param>
-		[JaneScriptApi]
+		[JaneScriptApi(Modified = true)]
 		public void Open(Board Board, int Number, OpenOperation Operation, bool NewTab, bool Relative, bool BackGround) {
 			base.InvokeMethod("Open", Board.ComObject, Number, (int)Operation, NewTab, Relative, BackGround);
 		}

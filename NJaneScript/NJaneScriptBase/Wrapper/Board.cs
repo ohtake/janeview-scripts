@@ -165,8 +165,7 @@ namespace NJaneScript.Wrapper {
 		/// スクリプトからの参照がなくなってもObjは保持され、再度スクリプトから参照すれば値を取得可能
 		/// ただし、板一覧の更新などによりBoardが参照する板の実体が再作成された場合はObjも失われる。
 		/// </summary>
-		[JaneScriptApi]
-		[WrapperNotRecommendedJaneScriptApi]
+		[JaneScriptApi(Incompatible=true)]
 		public object Obj {
 			get {
 				return base.InvokeGet("Obj");
@@ -180,10 +179,10 @@ namespace NJaneScript.Wrapper {
 		/// Action：○　LateCall:○　Command:○
 		/// 板のURL(例: Win板ならば"http://pc12.2ch.net/win/")
 		/// </summary>
-		[JaneScriptApi]
-		public string Url {
+		[JaneScriptApi(Modified=true)]
+		public Uri Url {
 			get {
-				return (string)base.InvokeGet("Url");
+				return new Uri((string)base.InvokeGet("Url"));
 			}
 		}
 	}
