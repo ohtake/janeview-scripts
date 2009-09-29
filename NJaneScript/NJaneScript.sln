@@ -14,6 +14,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{8579BC3F-C0FA-4022-8B9F-024193988351}"
 	ProjectSection(SolutionItems) = preProject
 		AggregateBinaries.cmd = AggregateBinaries.cmd
+		BuildDebug.cmd = BuildDebug.cmd
+		BuildRelease.cmd = BuildRelease.cmd
 	EndProjectSection
 EndProject
 Global
