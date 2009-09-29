@@ -92,9 +92,11 @@ namespace NJaneScript.Wrapper {
 		/// 最終レスが未定義値の場合は0。
 		/// </summary>
 		[JaneScriptApi]
-		public DateTime FinalRes {
+		public DateTime? FinalRes {
 			get {
-				return new DateTime((long)((double)base.InvokeGet("FinalRes") / 10), DateTimeKind.Utc);
+				double val = (double)base.InvokeGet("FinalRes");
+				if(val == 0) return null;
+				return new DateTime((long)(val/ 10), DateTimeKind.Utc);
 			}
 		}
 		/// <summary>
@@ -189,9 +191,11 @@ namespace NJaneScript.Wrapper {
 		/// 最終レスが未定義値の場合は0。
 		/// </summary>
 		[JaneScriptApi]
-		public DateTime LastGot {
+		public DateTime? LastGot {
 			get {
-				return new DateTime((long)((double)base.InvokeGet("LastGot") / 10), DateTimeKind.Utc);
+				double val = (double)base.InvokeGet("LastGot");
+				if (val == 0) return null;
+				return new DateTime((long)(val / 10), DateTimeKind.Utc);
 			}
 		}
 		/// <summary>
@@ -211,9 +215,11 @@ namespace NJaneScript.Wrapper {
 		/// スレの最終書き込みの時刻値。未定義値の場合は0。
 		/// </summary>
 		[JaneScriptApi]
-		public DateTime LastWrote {
+		public DateTime? LastWrote {
 			get {
-				return new DateTime((long)((double)base.InvokeGet("LastWrote") / 10), DateTimeKind.Utc);
+				double val = (double)base.InvokeGet("LastWrote");
+				if (val == 0) return null;
+				return new DateTime((long)(val / 10), DateTimeKind.Utc);
 			}
 		}
 
