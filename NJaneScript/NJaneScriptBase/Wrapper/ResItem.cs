@@ -47,7 +47,7 @@ namespace NJaneScript.Wrapper {
 		[JaneScriptApi(Modified=true)]
 		public DateTime DateValue {
 			get {
-				return new DateTime((long)((double)base.InvokeGet("DateValue") / 10), DateTimeKind.Utc);
+				return base.ConvertUtcToDateTime(base.InvokeGet("DateValue")).Value;
 			}
 		}
 		/// <summary>

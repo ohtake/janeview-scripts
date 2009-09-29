@@ -40,6 +40,33 @@ namespace NJaneScript.Wrapper {
 		protected void InvokeSet(string propName, object value) {
 			this.type.InvokeMember(propName, BindingFlags.SetProperty, null, this.comobj, new object[] { value });
 		}
+
+		/// <summary>
+		/// JaneScriptのUTC型の基準となる日時。
+		/// </summary>
+		private static readonly DateTime EpochUtc = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+
+		/// <summary>
+		/// JaneScriptでUTC型となっているオブジェクトを<see cref="Nullable&lt;DateTime&gt;"/>型に変換する。
+		/// </summary>
+		/// <param name="utcValue"></param>
+		/// <returns></returns>
+		protected DateTime? ConvertUtcToDateTime(object utcValue) {
+			double d;
+			if (utcValue is double) {
+				d = (double)utcValue;
+			}else if(utcValue is float){
+				d = (double)(float)utcValue;
+			} else if (utcValue is long) {
+				d = (double)(long)utcValue;
+			} else if (utcValue is int) {
+				d = (double)(int)utcValue;
+			} else {
+				throw new ArgumentException("UTCの型が不明です。");
+			}
+			if (d <= 0) return null;
+			return EpochUtc.AddMilliseconds(d);
+		}
 		
 		/// <summary>
 		/// ラップしているCOMオブジェクトを取得する。

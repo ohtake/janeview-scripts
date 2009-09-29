@@ -94,9 +94,7 @@ namespace NJaneScript.Wrapper {
 		[JaneScriptApi(Modified = true)]
 		public DateTime? FinalRes {
 			get {
-				double val = (double)base.InvokeGet("FinalRes");
-				if(val == 0) return null;
-				return new DateTime((long)(val/ 10), DateTimeKind.Utc);
+				return base.ConvertUtcToDateTime(base.InvokeGet("FinalRes"));
 			}
 		}
 		/// <summary>
@@ -193,9 +191,7 @@ namespace NJaneScript.Wrapper {
 		[JaneScriptApi(Modified = true)]
 		public DateTime? LastGot {
 			get {
-				double val = (double)base.InvokeGet("LastGot");
-				if (val == 0) return null;
-				return new DateTime((long)(val / 10), DateTimeKind.Utc);
+				return base.ConvertUtcToDateTime(base.InvokeGet("LastGot"));
 			}
 		}
 		/// <summary>
@@ -217,9 +213,7 @@ namespace NJaneScript.Wrapper {
 		[JaneScriptApi(Modified = true)]
 		public DateTime? LastWrote {
 			get {
-				double val = (double)base.InvokeGet("LastWrote");
-				if (val == 0) return null;
-				return new DateTime((long)(val / 10), DateTimeKind.Utc);
+				return base.ConvertUtcToDateTime(base.InvokeGet("LastWrote"));
 			}
 		}
 
