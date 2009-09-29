@@ -140,9 +140,10 @@ namespace NJaneScript.Wrapper {
 		/// <param name="mi"></param>
 		/// <param name="pti"></param>
 		public void InvokeHandler(object mi, object pti) {
-			MenuItem menu = (null == mi) ? null : new MenuItem(mi);
-			PopupTargetInfo targetInfo = (null == pti) ? null : new PopupTargetInfo(pti);
-			this.handler(menu, targetInfo);
+			using(MenuItem menu = (null == mi) ? null : new MenuItem(mi))
+			using (PopupTargetInfo targetInfo = (null == pti) ? null : new PopupTargetInfo(pti)) {
+				this.handler(menu, targetInfo);
+			}
 		}
 	}
 
