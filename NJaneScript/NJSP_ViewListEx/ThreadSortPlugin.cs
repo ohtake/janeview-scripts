@@ -22,7 +22,7 @@ namespace NJSP_ViewListEx {
 			if (!ascending.HasValue) {
 				menu.Caption = "-";
 			} else {
-				menu.Caption = Util.GetPrefixedMenuCaption(string.Format("開いているスレを{0}ソート", "昇順", "降順"));
+				menu.Caption = Util.GetPrefixedMenuCaption(string.Format("開いているスレを{0}ソート", ascending.Value ? "昇順" : "降順"));
 				base.PersistMenuItems(FunctionMenuUtil.AppendSubmenuItems(menu, new SortHandlerClass(ascending.Value).MenuHandler));
 			}
 			base.PersistMenuItem(menu);
