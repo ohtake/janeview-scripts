@@ -17,6 +17,7 @@ namespace NJSP_ViewListEx {
 				new ThreadListPlugin(),
 				new ViewClosePlugin(),
 				new ThreadSortPlugin(),
+				new MiscWritePlugin(),
 			};
 		}
 	}
