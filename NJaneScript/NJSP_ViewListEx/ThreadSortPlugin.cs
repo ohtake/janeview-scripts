@@ -61,8 +61,6 @@ namespace NJSP_ViewListEx {
 					} else {
 						pairs.Sort(this.DescendingComparison);
 					}
-					//閉じようとしているスレッドを開こうとするとよくないっぽいので
-					js.ProcessMessages();
 					//全部開く
 					foreach (var p in pairs) {
 						js.Open(p.Thread, 0, OpenOperation.Local, true, false, true);
@@ -70,10 +68,13 @@ namespace NJSP_ViewListEx {
 				}
 			}
 			private int AscendingComparison(ThreadKeyPair x, ThreadKeyPair y) {
+				if (x.SortKey == y.SortKey) return 0;
+				if (x.SortKey == null) return -1;
+				if (y.SortKey == null) return 1;
 				return x.SortKey.CompareTo(y.SortKey);
 			}
 			private int DescendingComparison(ThreadKeyPair x, ThreadKeyPair y) {
-				return y.SortKey.CompareTo(x.SortKey);
+				return this.AscendingComparison(y, x);
 			}
 		}
 		private sealed class ThreadKeyPair {
