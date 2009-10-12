@@ -18,7 +18,7 @@ namespace NJSP_CN {
 			JaneScript js = base.Host.JaneScript;
 			using (ViewList vl = js.ViewList()){
 				List<TitleUriPair> pairs = new List<TitleUriPair>();
-				using (DisposableList<ViewItem> views = new DisposableList<ViewItem>(vl.GetEnumerable())) {
+				using (DisposableList<ViewItem> views = new DisposableList<ViewItem>(vl)) {
 					foreach (ViewItem view in views) {
 						if (pred(view)) {
 							using (ThreadItem t = view.Thread()) {

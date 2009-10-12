@@ -59,24 +59,26 @@ namespace NJSP_CN {
 		}
 		private List<IdMatchInfo> GetIdMatches(JaneScript js, Board board, string id) {
 			List<IdMatchInfo> matches = new List<IdMatchInfo>();
-			foreach (ThreadItem t in board.GetEnumerable()) {
-				if (!t.DatExist) continue;
-				int lines = t.Lines;
-				// HACK 全取得スレッドをなめなくてもいいようにすべき
-				// sinse や LastGot で事前に日付チェックを行ったり
-				// バイナリサーチで日付の一致する範囲を事前に調べたり
-				for (int i = 1; i <= lines; i++) {
-					using (ResItem res = t.GetRes(i)) {
-						if (res.Id == id) {
-							matches.Add(new IdMatchInfo() {
-								datName = t.DatName,
-								resNumber = i,
-								datetime = res.DateValue,
-							});
+			using (DisposableList<ThreadItem> threads = Util.CreateThreadItemList(board)) {
+				foreach (ThreadItem t in threads) {
+					if (!t.DatExist) continue;
+					int lines = t.Lines;
+					// HACK 全取得スレッドをなめなくてもいいようにすべき
+					// sinse や LastGot で事前に日付チェックを行ったり
+					// バイナリサーチで日付の一致する範囲を事前に調べたり
+					for (int i = 1; i <= lines; i++) {
+						using (ResItem res = t.GetRes(i)) {
+							if (res.Id == id) {
+								matches.Add(new IdMatchInfo() {
+									datName = t.DatName,
+									resNumber = i,
+									datetime = res.DateValue,
+								});
+							}
 						}
 					}
+					js.ProcessMessages();
 				}
-				js.ProcessMessages();
 			}
 			return matches;
 		}

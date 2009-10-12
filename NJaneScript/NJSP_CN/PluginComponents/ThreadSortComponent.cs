@@ -38,7 +38,7 @@ namespace NJSP_CN {
 			}
 			public void MenuHandler(Converter<ThreadItem, object> selector, MenuItem menu, PopupTargetInfo pti) {
 				using (ViewList vl = this.js.ViewList())
-				using (DisposableList<ViewItem> views = new DisposableList<ViewItem>(vl.GetEnumerable()))
+				using (DisposableList<ViewItem> views = new DisposableList<ViewItem>(vl))
 				using (DisposableList<ThreadItem> threads = new DisposableList<ThreadItem>()) {
 					//スレッドを抽出
 					foreach (ViewItem view in views) {

@@ -33,6 +33,19 @@ namespace NJSP_CN {
 		public static string GetPrefixedMenuCaption(string caption) {
 			return "[CN] " + caption;
 		}
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="board">板。事前にLoadを呼んでおくこと。</param>
+		/// <returns></returns>
+		public static DisposableList<ThreadItem> CreateThreadItemList(Board board) {
+			int count = board.Count;
+			DisposableList<ThreadItem> list = new DisposableList<ThreadItem>(count);
+			for (int i = 0; i < count; i++) {
+				list.Add(board.GetThread(i));
+			}
+			return list;
+		}
 	}
 	
 	sealed class DisposableList<T> : List<T>, IDisposable where T : IDisposable {
@@ -42,11 +55,15 @@ namespace NJSP_CN {
 		public DisposableList(int capacity)
 			: base(capacity) {
 		}
-		public DisposableList(IEnumerable<T> collection)
-			: base(collection) {
+		public DisposableList(IItemizable<T> itemizable)
+			: base(itemizable.Count) {
+			int count = itemizable.Count;
+			for (int i = 0; i < count; i++) {
+				base.Add(itemizable.Items(i));
+			}
 		}
-
-		private void Dispose(bool disposing){
+		
+		private void Dispose(bool disposing) {
 			if (disposing) {
 				base.ForEach(x => x.Dispose());
 				base.Clear();

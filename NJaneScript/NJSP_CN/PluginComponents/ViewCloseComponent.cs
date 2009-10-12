@@ -23,7 +23,7 @@ namespace NJSP_CN {
 		public void MenuHandler(Predicate<ViewItem> pred, MenuItem menu, PopupTargetInfo pti) {
 			JaneScript js = base.Host.JaneScript;
 			using (ViewList vl = js.ViewList())
-			using (DisposableList<ViewItem> views = new DisposableList<ViewItem>(vl.GetEnumerable())) {
+			using (DisposableList<ViewItem> views = new DisposableList<ViewItem>(vl)) {
 				List<ViewItem> closeTargets = new List<ViewItem>();
 				foreach (ViewItem view in views) {
 					if (pred(view)) {

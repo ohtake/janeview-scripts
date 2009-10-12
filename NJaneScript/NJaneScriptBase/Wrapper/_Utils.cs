@@ -71,37 +71,12 @@ namespace NJaneScript.Wrapper {
 		/// <summary>時間に応じて</summary>
 		JikanniOujite = 4,
 	}
-
+	
 	public interface IItemizable<T> {
 		int Count { get; }
 		T Items(int Index);
 	}
-
-	/// <summary>
-	/// ラッパクラスのためのイクステンション。
-	/// </summary>
-	public static class Extensions {
-		public static IEnumerable<T> GetEnumerable<T>(this IItemizable<T> items) {
-			int count = items.Count;
-			for (int i = 0; i < count; i++) {
-				yield return items.Items(i);
-			}
-		}
-		/// <summary>
-		/// 板内のスレを列挙するために用いる。
-		/// 全スレッドを取得するには事前に<see cref="Board.Load"/>を呼び出しておく必要がある。
-		/// </summary>
-		/// <param name="board"></param>
-		/// <returns></returns>
-		/// <seealso cref="Board.Load"/>
-		public static IEnumerable<ThreadItem> GetEnumerable(this Board board) {
-			int count = board.Count;
-			for (int i = 0; i < count; i++) {
-				yield return board.GetThread(i);
-			}
-		}
-	}
-
+	
 	/// <summary>
 	/// menuconf.iniのセクション名をまとめたクラス。
 	/// <see cref="JaneScript.InsertMenu"/>の第一引数で用いる。

@@ -98,11 +98,11 @@ namespace NJSP_CN {
 			datout.WriteBR();
 			datout.WriteHTML("<hr>");
 			using (CategoryList cl = js.CategoryList())
-			using (DisposableList<Category> categories = new DisposableList<Category>(cl.GetEnumerable())) {
+			using (DisposableList<Category> categories = new DisposableList<Category>(cl)) {
 				foreach (Category category in categories) {
 					DirectoryInfo diCate = new DirectoryInfo(category.LogDir);
 					if (!diCate.Exists) continue;
-					using (DisposableList<Board> boards = new DisposableList<Board>(category.GetEnumerable())) {
+					using (DisposableList<Board> boards = new DisposableList<Board>(category)) {
 						foreach(Board board in boards){
 							board.Load();
 							// カテゴリディレクトリの草稿を探す
