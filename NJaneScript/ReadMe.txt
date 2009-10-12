@@ -8,13 +8,13 @@ JaneScript を .NET で書くためのソリューションです。
 
 NJaneScript.js を Script ディレクトリに置き、ScriptIndex.txt に追記する。
 NJaneScriptBase.dll, NJaneScriptPluginManager.dll, NJSP_CN.dll を
-jane2ch.exe と同じディレクトリに置く。
+Jane2ch.exe と同じディレクトリに置く。
 
 ■ プラグインの開発者向け情報
 
 NJaneScriptBase プロジェクトの NJaneScript.PluginContract ネームスペースにしたがって
 プラグインを実装する。
-実装したプラグインのアセンブリを jane2ch.exe と同じディレクトリに置き
+実装したプラグインのアセンブリを Jane2ch.exe と同じディレクトリに置き
 NJaneScript.js で読み込むアセンブリを指定する。
 
 プラグインとして実装せずに独自に実装するには
@@ -28,7 +28,7 @@ JaneScript のオブジェクトのメソッド呼び出し等は JScript に比べると遅いはずです。
 リソース開放を確実に行うために using を使いましょう。
 
 ・デバッグ
-デバッグビルドのアセンブリとpdbファイルを jane2ch.exe と同じディレクトリに置く。
-jane2ch.exe を起動して Visual Studio から jane2ch.exe プロセスにアタッチ。
+デバッグビルドのアセンブリとpdbファイルを Jane2ch.exe と同じディレクトリに置く。
+Jane2ch.exe を起動して Visual Studio から Jane2ch.exe プロセスにアタッチ。
 ソースコード上でブレークポイントを設置すればそこでブレークする。
 
