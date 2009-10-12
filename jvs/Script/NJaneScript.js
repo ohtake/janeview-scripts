@@ -10,8 +10,7 @@ var janeDir = GetJaneDirPath();
  * 読み込ませるプラグインのファイル名。
  */
 var pluginFileNames = [
-	janeDir + "NJSP_Test1.dll",
-	janeDir + "NJSP_Test2.dll"
+	janeDir + "NJSP_CN.dll"
 ];
 
 /**
