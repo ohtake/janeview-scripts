@@ -1,9 +1,13 @@
 ﻿NJaneScript 向けプラグイン NJSP_CN
 
-■ CNって何？
-
-中国じゃないです。
+自分用のスクリプト詰め合わせです。
 
 ■ プラグインの設定方法
 
+未実装。
+最低でも使う機能の取捨選択くらいはできるように。
+
+■ CNって何？
+
+http://sanriobb.com/freeisp/common_cn.html
 
