@@ -6,27 +6,17 @@ using NJaneScript.PluginContract;
 using NJaneScript.Wrapper;
 using System.Web;
 
-namespace NJSP_Test2 {
-	/// <summary>
-	/// ID関係のプラグイン。
-	/// </summary>
-	public sealed class IdPlugin : IPlugin {
-		private List<MenuItem> menus = new List<MenuItem>(); // メニューへの参照を持ったままにしておいてメニュー項目が消えないようにする
+namespace NJSP_CN {
+	public sealed class IdComponent : PluginComponentBase {
+		public override void Initialize(JaneScript js) {
+			this.AddMenu(js, Util.GetPrefixedMenuCaption("所属板の取得ログからID検索して日時順にソート"), this.HandleFindId);
+		}
 		
-		public void Initialize(JaneScript js) {
-			this.AddMenu(js, "所属板の取得ログからID検索して日時順にソート", this.HandleFindId);
-		}
-		public void Quit(JaneScript js) {
-			// MenuItemを開放
-			this.menus.ForEach(m => m.Dispose());
-			menus.Clear();
-		}
-
 		private void AddMenu(JaneScript js, string name, Action<MenuItem, PopupTargetInfo> handler) {
 			MenuItem menu1 = js.InsertMenu(MenuNames.MainWnd_PopupIDMenu, "", 1000);
 			menu1.Caption = name;
 			menu1.OnClick = handler;
-			this.menus.Add(menu1);
+			base.PersistMenuItem(menu1);
 		}
 
 		private void HandleFindId(MenuItem mi, PopupTargetInfo pti) {
@@ -91,7 +81,9 @@ namespace NJSP_Test2 {
 		}
 		
 		private void OutputMatches(JaneScript js, Board board, string id, List<IdMatchInfo> matches) {
-			Util.WriteToNewView(js, "ID検索", string.Format("ID検索: ID:{0} {1}", id, board.Name), (DatOut datout) => {
+			string shortTitle = "ID検索";
+			string longTitle = string.Format("ID検索: ID:{0} {1}", id, board.Name);
+			Util.WriteToNewView(js, shortTitle, longTitle, longTitle, false, false, (DatOut datout) => {
 				var q =
 					from m in matches
 					orderby m.datetime

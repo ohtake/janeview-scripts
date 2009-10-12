@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using NJaneScript.Wrapper;
 
-namespace NJSP_ViewListEx {
-	public sealed class ThreadListPlugin : BasePlugin{
+namespace NJSP_CN {
+	public sealed class ThreadListComponent : PluginComponentBase {
 		public override void Initialize(JaneScript js) {
 			MenuItem menu = js.InsertMenu(MenuNames.MainWnd_MainMenu, "Find1", 1000);
 			menu.Caption = Util.GetPrefixedMenuCaption("開いているスレを条件で書き出す");

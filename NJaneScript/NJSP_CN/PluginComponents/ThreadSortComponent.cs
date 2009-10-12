@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using NJaneScript.Wrapper;
 
-namespace NJSP_ViewListEx {
-	public sealed class ThreadSortPlugin : BasePlugin {
+namespace NJSP_CN {
+	public sealed class ThreadSortComponent : PluginComponentBase {
 		public override void Initialize(JaneScript js) {
 			this.AddMenus(js, null);
 			this.AddMenus(js, true);

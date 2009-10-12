@@ -5,28 +5,21 @@ using System.Text;
 using NJaneScript.PluginContract;
 using NJaneScript.Wrapper;
 
-namespace NJSP_Test2 {
+namespace NJSP_CN {
 	/// <summary>
 	/// レスをつけられている個数関係のプラグイン。
 	/// </summary>
-	public sealed class RefCountPlugin : IPlugin {
-		private List<MenuItem> menus = new List<MenuItem>(); // メニューへの参照を持ったままにしておいてメニュー項目が消えないようにする
-
-		public void Initialize(JaneScript js) {
-			this.AddMenu(js, "レス数でグループ化", this.HandleGroupBy);
-			this.AddMenu(js, "レス数トップ10", this.HandleTop10);
+	public sealed class RefCountComponent : PluginComponentBase {
+		public override void Initialize(JaneScript js) {
+			this.AddMenu(js, Util.GetPrefixedMenuCaption("レス数でグループ化"), this.HandleGroupBy);
+			this.AddMenu(js, Util.GetPrefixedMenuCaption("レス数トップ10"), this.HandleTop10);
 		}
-		public void Quit(JaneScript js) {
-			// MenuItemを開放
-			this.menus.ForEach(m => m.Dispose());
-			menus.Clear();
-		}
-
+		
 		private void AddMenu(JaneScript js, string name, Action<MenuItem, PopupTargetInfo> handler) {
 			MenuItem menu1 = js.InsertMenu(MenuNames.MainWnd_ThreadPopupMenu, "", 1000);
 			menu1.Caption = name;
 			menu1.OnClick = handler;
-			this.menus.Add(menu1);
+			base.PersistMenuItem(menu1);
 		}
 
 		private void HandleGroupBy(MenuItem mi, PopupTargetInfo pti) {
@@ -73,7 +66,9 @@ namespace NJSP_Test2 {
 				orderby g.Key descending
 				select g;
 			Uri threadUri = thread.URL;
-			Util.WriteToNewView(js, "レス数でグループ化", "レス数でグループ化: " + thread.Title, (DatOut datout) => {
+			string shortTitle = "レス数でグループ化";
+			string longTitle = "レス数でグループ化: " + thread.Title;
+			Util.WriteToNewView(js, shortTitle,longTitle, longTitle, false, false, (DatOut datout) => {
 				foreach (var g in groups) {
 					datout.WriteHTML(string.Format("<dt>{0} ({1})</dt>", g.Key, g.Count()));
 					StringBuilder sb = new StringBuilder("<dd>");
@@ -93,7 +88,9 @@ namespace NJSP_Test2 {
 				orderby rr.RefCount descending
 				select rr)
 				.Take(10).ToArray();
-			Util.WriteToNewView(js, "レス数トップ10", "レス数トップ10: " + thread.Title, (DatOut datout) => {
+			string shortTitle = "レス数トップ10";
+			string longTitle = "レス数トップ10: " + thread.Title;
+			Util.WriteToNewView(js, shortTitle, longTitle, longTitle, false, false, (DatOut datout) => {
 				for (int i = 0; i < top.Length; i++) {
 					var rr = top[i];
 					datout.WriteText(string.Format("{0}位 {1}レス", i + 1, rr.RefCount));

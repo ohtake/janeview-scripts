@@ -5,23 +5,9 @@ using System.Diagnostics;
 using System.IO;
 using NJaneScript.PluginContract;
 using NJaneScript.Wrapper;
+using System.ComponentModel;
 
-namespace NJSP_ViewListEx {
-	[PluginFactoryClass]
-	public sealed class PluginFactory : IPluginFactory {
-		public PluginFactory() {
-		}
-		public IPlugin[] CreatePlugins() {
-			return new IPlugin[]{
-				new HelpPlugin(),
-				new ThreadListPlugin(),
-				new ViewClosePlugin(),
-				new ThreadSortPlugin(),
-				new MiscWritePlugin(),
-			};
-		}
-	}
-
+namespace NJSP_CN {
 	static class Util {
 		public static void WriteToNewView(JaneScript js, string tabText, string extraTitle, string hintText, bool relative, bool background, Action<DatOut> writeAction) {
 			using (ViewList vl = js.ViewList())
@@ -45,10 +31,10 @@ namespace NJSP_ViewListEx {
 			}
 		}
 		public static string GetPrefixedMenuCaption(string caption) {
-			return "[ViewListEx] " + caption;
+			return "[CN] " + caption;
 		}
 	}
-
+	
 	sealed class DisposableList<T> : List<T>, IDisposable where T : IDisposable {
 		public DisposableList()
 			: base() {
@@ -75,35 +61,19 @@ namespace NJSP_ViewListEx {
 		}
 	}
 
-	public abstract class BasePlugin : IPlugin {
+	public abstract class PluginComponentBase {
 		private DisposableList<MenuItem> menuItems = new DisposableList<MenuItem>();
-		
+
 		protected void PersistMenuItem(MenuItem menu) {
 			this.menuItems.Add(menu);
 		}
 		protected void PersistMenuItems(IEnumerable<MenuItem> menus) {
 			this.menuItems.AddRange(menus);
 		}
-		
+
 		public abstract void Initialize(JaneScript js);
 		public virtual void Quit(JaneScript js) {
 			this.menuItems.Dispose();
-		}
-	}
-
-	public sealed class HelpPlugin : BasePlugin {
-		public override void Initialize(JaneScript js) {
-			MenuItem menu = js.InsertMenu(MenuNames.MainWnd_MainMenu, "MenuHelps", 1000);
-			menu.Caption = Util.GetPrefixedMenuCaption("ヘルプ");
-			menu.OnClick = this.HandleOpenHelp;
-			base.PersistMenuItem(menu);
-		}
-		
-		private void HandleOpenHelp(MenuItem menu, PopupTargetInfo pti) {
-			using (JaneScript js = WrapperManager.GetJaneScript()) {
-				FileInfo fi = new FileInfo(js.ExeName());
-				Process.Start(Path.Combine(fi.Directory.FullName, "NJSP_ViewListEx.txt"));
-			}
 		}
 	}
 }

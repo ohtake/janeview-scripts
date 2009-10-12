@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using NJaneScript.Wrapper;
 using System.IO;
-using System.Windows;
 using System.Text;
+using NJaneScript.Wrapper;
+using Clipboard = System.Windows.Forms.Clipboard;
 
-namespace NJSP_ViewListEx {
-	public sealed class MiscWritePlugin : BasePlugin{
+namespace NJSP_CN {
+	public sealed class MiscWritePlugin : PluginComponentBase {
 		private static readonly Encoding encShiftJis = Encoding.GetEncoding("Shift_JIS");
 
 		public override void Initialize(JaneScript js) {
@@ -98,7 +98,7 @@ namespace NJSP_ViewListEx {
 			}
 		}
 		private void FindAndWriteDrafts(JaneScript js, DatOut datout, bool readDraftContents) {
-			datout.WriteText("草稿を検索しています");
+			datout.WriteText("草稿を検索しています。");
 			datout.WriteBR();
 			datout.WriteHTML("<hr>");
 			using (CategoryList cl = js.CategoryList())
@@ -110,7 +110,7 @@ namespace NJSP_ViewListEx {
 						foreach(Board board in boards){
 							board.Load();
 							// カテゴリディレクトリの草稿を探す
-							FileInfo fi = new FileInfo(Path.Combine(category.LogDir, board.Name + ".mns"));
+							FileInfo fi = new FileInfo(Path.Combine(category.LogDir, board.Name + "NewThread.mns"));
 							if (fi.Exists) this.OutDraft(datout, category, board, fi, readDraftContents);
 							// 板ディレクトリ内を探す
 							DirectoryInfo di = new DirectoryInfo(board.LogDir);
@@ -142,6 +142,7 @@ namespace NJSP_ViewListEx {
 			if (readDraftContents) {
 				this.DatOut(datout, fi);
 			}
+			datout.WriteBR();
 		}
 		private void OutDraft(DatOut datout, Category category, Board board, ThreadItem thread, FileInfo fi, bool readDraftContents) {
 			datout.WriteHTML(string.Format("<dt>{0} [<a href=\"{1}\">{2}</a>] <a href=\"{3}\">{4}</a></dt>",
@@ -153,6 +154,7 @@ namespace NJSP_ViewListEx {
 			if (readDraftContents) {
 				this.DatOut(datout, fi);
 			}
+			datout.WriteBR();
 		}
 		private void DatOut(DatOut datout, FileInfo fi) {
 			using (Stream stream = fi.OpenRead())

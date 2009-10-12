@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using NJaneScript.Wrapper;
 
-namespace NJSP_ViewListEx {
-	public sealed class ViewClosePlugin : BasePlugin {
+namespace NJSP_CN {
+	public sealed class ViewCloseComponent : PluginComponentBase {
 		public override void Initialize(JaneScript js) {
 			MenuItem menu1 = js.InsertMenu(MenuNames.MainWnd_MainMenu, "MenuThre",
 				js.MenuIndex(MenuNames.MainWnd_MainMenu, "N28"));

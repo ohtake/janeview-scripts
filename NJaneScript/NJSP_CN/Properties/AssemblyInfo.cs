@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("NJSP_Test2")]
+[assembly: AssemblyTitle("NJSP_CN")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("NJSP_Test2")]
+[assembly: AssemblyProduct("NJSP_CN")]
 [assembly: AssemblyCopyright("Copyright ©  2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c24999a0-1c73-4bd2-97ec-9111fcbae49c")]
+[assembly: Guid("2793920a-8e5e-4ae1-a7ff-d302e65bc56f")]
 
 // Version information for an assembly consists of the following four values:
 //

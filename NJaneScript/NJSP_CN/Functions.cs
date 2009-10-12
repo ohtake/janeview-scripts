@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using NJaneScript.Wrapper;
 
-namespace NJSP_ViewListEx {
+namespace NJSP_CN {
 	public static class ViewPredicates {
 		public static bool Tautology(ViewItem v) {
 			return true;

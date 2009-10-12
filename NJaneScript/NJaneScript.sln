@@ -5,16 +5,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJaneScriptBase", "NJaneScr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJaneScriptPluginManager", "NJaneScriptPluginManager\NJaneScriptPluginManager.csproj", "{674A5ECD-A383-41C7-B58A-A8E416F93CF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJSP_Test2", "NJSP_Test2\NJSP_Test2.csproj", "{45FD28A5-46D0-402C-8A77-15F5124C82C7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJSP_ViewListEx", "NJSP_ViewListEx\NJSP_ViewListEx.csproj", "{AF66719D-A15D-47EB-ABDC-E06A1126E9E3}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{8579BC3F-C0FA-4022-8B9F-024193988351}"
 	ProjectSection(SolutionItems) = preProject
 		AggregateBinaries.cmd = AggregateBinaries.cmd
 		BuildDebug.cmd = BuildDebug.cmd
 		BuildRelease.cmd = BuildRelease.cmd
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJSP_CN", "NJSP_CN\NJSP_CN.csproj", "{3FA0C306-5568-4A2E-A36C-78A465E0E0FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,14 +28,10 @@ Global
 		{674A5ECD-A383-41C7-B58A-A8E416F93CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{674A5ECD-A383-41C7-B58A-A8E416F93CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{674A5ECD-A383-41C7-B58A-A8E416F93CF0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{45FD28A5-46D0-402C-8A77-15F5124C82C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{45FD28A5-46D0-402C-8A77-15F5124C82C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{45FD28A5-46D0-402C-8A77-15F5124C82C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{45FD28A5-46D0-402C-8A77-15F5124C82C7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AF66719D-A15D-47EB-ABDC-E06A1126E9E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AF66719D-A15D-47EB-ABDC-E06A1126E9E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AF66719D-A15D-47EB-ABDC-E06A1126E9E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AF66719D-A15D-47EB-ABDC-E06A1126E9E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FA0C306-5568-4A2E-A36C-78A465E0E0FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FA0C306-5568-4A2E-A36C-78A465E0E0FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FA0C306-5568-4A2E-A36C-78A465E0E0FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FA0C306-5568-4A2E-A36C-78A465E0E0FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
