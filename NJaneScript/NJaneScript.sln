@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{8579BC3F-C
 		AggregateBinaries.cmd = AggregateBinaries.cmd
 		BuildDebug.cmd = BuildDebug.cmd
 		BuildRelease.cmd = BuildRelease.cmd
+		ReadMe.txt = ReadMe.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJSP_CN", "NJSP_CN\NJSP_CN.csproj", "{3FA0C306-5568-4A2E-A36C-78A465E0E0FD}"
