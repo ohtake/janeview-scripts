@@ -5,7 +5,8 @@ using NJaneScript.Wrapper;
 
 namespace NJSP_CN {
 	public sealed class ThreadSortComponent : PluginComponentBase {
-		public override void Initialize(JaneScript js) {
+		public override void Initialize() {
+			JaneScript js = base.Host.JaneScript;
 			this.AddMenus(js, null);
 			this.AddMenus(js, true);
 			this.AddMenus(js, false);

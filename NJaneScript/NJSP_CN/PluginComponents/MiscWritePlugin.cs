@@ -11,7 +11,8 @@ namespace NJSP_CN {
 	public sealed class MiscWritePlugin : PluginComponentBase {
 		private static readonly Encoding encShiftJis = Encoding.GetEncoding("Shift_JIS");
 
-		public override void Initialize(JaneScript js) {
+		public override void Initialize() {
+			JaneScript js = base.Host.JaneScript;
 			MenuItem menu = js.InsertMenu(MenuNames.MainWnd_MainMenu, "Find1", 1000);
 			menu.Caption = Util.GetPrefixedMenuCaption("スレビューへのその他書き出し");
 			base.PersistMenuItem(menu);

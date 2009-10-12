@@ -6,7 +6,8 @@ using NJaneScript.Wrapper;
 
 namespace NJSP_CN {
 	public sealed class ThreadListComponent : PluginComponentBase {
-		public override void Initialize(JaneScript js) {
+		public override void Initialize() {
+			JaneScript js = base.Host.JaneScript;
 			MenuItem menu = js.InsertMenu(MenuNames.MainWnd_MainMenu, "Find1", 1000);
 			menu.Caption = Util.GetPrefixedMenuCaption("開いているスレを条件で書き出す");
 			base.PersistMenuItem(menu);

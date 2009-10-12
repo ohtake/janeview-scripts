@@ -8,7 +8,8 @@ using System.Web;
 
 namespace NJSP_CN {
 	public sealed class IdComponent : PluginComponentBase {
-		public override void Initialize(JaneScript js) {
+		public override void Initialize() {
+			JaneScript js = base.Host.JaneScript;
 			this.AddMenu(js, Util.GetPrefixedMenuCaption("所属板の取得ログからID検索して日時順にソート"), this.HandleFindId);
 		}
 		

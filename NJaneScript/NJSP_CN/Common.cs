@@ -62,6 +62,7 @@ namespace NJSP_CN {
 	}
 
 	public abstract class PluginComponentBase {
+		private IHost host;
 		private DisposableList<MenuItem> menuItems = new DisposableList<MenuItem>();
 
 		protected void PersistMenuItem(MenuItem menu) {
@@ -70,9 +71,18 @@ namespace NJSP_CN {
 		protected void PersistMenuItems(IEnumerable<MenuItem> menus) {
 			this.menuItems.AddRange(menus);
 		}
+		protected IHost Host {
+			get {
+				return this.host;
+			}
+		}
 
-		public abstract void Initialize(JaneScript js);
-		public virtual void Quit(JaneScript js) {
+		public abstract void Initialize();
+		public void Initialize(IHost host) {
+			this.host = host;
+			this.Initialize();
+		}
+		public virtual void Quit() {
 			this.menuItems.Dispose();
 		}
 	}

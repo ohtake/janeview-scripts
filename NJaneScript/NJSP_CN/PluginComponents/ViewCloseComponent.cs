@@ -5,7 +5,8 @@ using NJaneScript.Wrapper;
 
 namespace NJSP_CN {
 	public sealed class ViewCloseComponent : PluginComponentBase {
-		public override void Initialize(JaneScript js) {
+		public override void Initialize() {
+			JaneScript js = base.Host.JaneScript;
 			MenuItem menu1 = js.InsertMenu(MenuNames.MainWnd_MainMenu, "MenuThre",
 				js.MenuIndex(MenuNames.MainWnd_MainMenu, "N28"));
 			MenuItem menu2 = js.InsertMenu(MenuNames.MainWnd_ThreadPopupMenu, "",

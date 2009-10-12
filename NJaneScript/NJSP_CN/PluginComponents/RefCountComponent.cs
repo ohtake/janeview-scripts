@@ -10,7 +10,8 @@ namespace NJSP_CN {
 	/// レスをつけられている個数関係のプラグイン。
 	/// </summary>
 	public sealed class RefCountComponent : PluginComponentBase {
-		public override void Initialize(JaneScript js) {
+		public override void Initialize() {
+			JaneScript js = base.Host.JaneScript;
 			this.AddMenu(js, Util.GetPrefixedMenuCaption("レス数でグループ化"), this.HandleGroupBy);
 			this.AddMenu(js, Util.GetPrefixedMenuCaption("レス数トップ10"), this.HandleTop10);
 		}

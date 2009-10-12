@@ -20,17 +20,7 @@ namespace NJSP_CN {
 		}
 	}
 	
-	[PluginFactoryClass]
-	public sealed class PluginFactory : IPluginFactory {
-		public PluginFactory() {
-		}
-		public IPlugin[] CreatePlugins() {
-			return new IPlugin[]{
-				new PluginContainer(),
-			};
-		}
-	}
-	
+	[ExportPlugin]
 	public sealed class PluginContainer : IPlugin {
 		private List<PluginComponentBase> components = new List<PluginComponentBase>();
 
@@ -44,12 +34,12 @@ namespace NJSP_CN {
 			this.components.Add(new MiscWritePlugin());
 		}
 
-		public void Initialize(JaneScript js) {
-			this.components.ForEach(c => c.Initialize(js));
+		public void Initialize(IHost host) {
+			this.components.ForEach(c => c.Initialize(host));
 		}
-
-		public void Quit(JaneScript js) {
-			this.components.ForEach(c => c.Quit(js));
+		
+		public void Quit(IHost host) {
+			this.components.ForEach(c => c.Quit());
 		}
 	}
 }

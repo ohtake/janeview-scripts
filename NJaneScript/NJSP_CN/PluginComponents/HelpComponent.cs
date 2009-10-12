@@ -7,7 +7,8 @@ using NJaneScript.Wrapper;
 
 namespace NJSP_CN {
 	public sealed class HelpComponent : PluginComponentBase {
-		public override void Initialize(JaneScript js) {
+		public override void Initialize() {
+			JaneScript js = base.Host.JaneScript;
 			MenuItem menu = js.InsertMenu(MenuNames.MainWnd_MainMenu, "MenuHelps", 1000);
 			menu.Caption = Util.GetPrefixedMenuCaption("ヘルプ");
 			menu.OnClick = this.HandleOpenHelp;
