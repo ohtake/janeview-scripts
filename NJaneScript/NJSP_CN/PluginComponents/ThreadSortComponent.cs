@@ -24,19 +24,20 @@ namespace NJSP_CN {
 				menu.Caption = "-";
 			} else {
 				menu.Caption = Util.GetPrefixedMenuCaption(string.Format("開いているスレを{0}ソート", ascending.Value ? "昇順" : "降順"));
-				base.PersistMenuItems(FunctionMenuUtil.AppendSubmenuItems(menu, new SortHandlerClass(ascending.Value).MenuHandler));
+				base.PersistMenuItems(FunctionMenuUtil.AppendSubmenuItems(menu, new SortHandlerClass(js, ascending.Value).MenuHandler));
 			}
 			base.PersistMenuItem(menu);
 		}
 		
 		private sealed class SortHandlerClass {
+			private JaneScript js;
 			private bool ascending;
-			public SortHandlerClass(bool ascending) {
+			public SortHandlerClass(JaneScript js, bool ascending) {
+				this.js = js;
 				this.ascending = ascending;
 			}
 			public void MenuHandler(Converter<ThreadItem, object> selector, MenuItem menu, PopupTargetInfo pti) {
-				using (JaneScript js = WrapperManager.GetJaneScript())
-				using (ViewList vl = js.ViewList())
+				using (ViewList vl = this.js.ViewList())
 				using (DisposableList<ViewItem> views = new DisposableList<ViewItem>(vl.GetEnumerable()))
 				using (DisposableList<ThreadItem> threads = new DisposableList<ThreadItem>()) {
 					//スレッドを抽出
@@ -46,7 +47,7 @@ namespace NJSP_CN {
 					}
 					//スレッドを全部閉じる
 					foreach (ThreadItem t in threads) {
-						js.Close(t);
+						this.js.Close(t);
 					}
 					//スレッドのソートキー取得
 					List<ThreadKeyPair> pairs = new List<ThreadKeyPair>(threads.Count);
@@ -64,7 +65,7 @@ namespace NJSP_CN {
 					}
 					//全部開く
 					foreach (var p in pairs) {
-						js.Open(p.Thread, 0, OpenOperation.Local, true, false, true);
+						this.js.Open(p.Thread, 0, OpenOperation.Local, true, false, true);
 					}
 				}
 			}

@@ -37,66 +37,61 @@ namespace NJSP_CN {
 		}
 
 		private void WriteLastDat(MenuItem menu, PopupTargetInfo pti) {
-			using (JaneScript js = WrapperManager.GetJaneScript()) {
-				FileInfo fi = new FileInfo(Path.Combine(new FileInfo(js.ExeName()).Directory.FullName, "last.dat"));
-				if (!fi.Exists) {
-					js.Log("last.dat が見つかりませんでした");
-					return;
-				}
-				List<string> lines = new List<string>();
-				using (Stream stream = fi.OpenRead())
-				using (StreamReader reader = new StreamReader(stream, MiscWritePlugin.encShiftJis)) {
-					string line;
-					while (null != (line = reader.ReadLine())) {
-						lines.Add(line);
-					}
-				}
-				Util.WriteToNewView(js, "last.dat", "last.dat の書き出し", "last.dat の書き出し", false, false, (datout) => {
-					lines.ForEach(line => {
-						datout.WriteHTML(string.Format("<a href=\"{0}\">{0}</a><br>", line));
-					});
-				});
+			JaneScript js = base.Host.JaneScript;
+			FileInfo fi = new FileInfo(Path.Combine(new FileInfo(js.ExeName()).Directory.FullName, "last.dat"));
+			if (!fi.Exists) {
+				js.Log("last.dat が見つかりませんでした");
+				return;
 			}
+			List<string> lines = new List<string>();
+			using (Stream stream = fi.OpenRead())
+			using (StreamReader reader = new StreamReader(stream, MiscWritePlugin.encShiftJis)) {
+				string line;
+				while (null != (line = reader.ReadLine())) {
+					lines.Add(line);
+				}
+			}
+			Util.WriteToNewView(js, "last.dat", "last.dat の書き出し", "last.dat の書き出し", false, false, (datout) => {
+				lines.ForEach(line => {
+					datout.WriteHTML(string.Format("<a href=\"{0}\">{0}</a><br>", line));
+				});
+			});
 		}
 		private void WriteClipboardTextAsText(MenuItem menu, PopupTargetInfo pti) {
-			using (JaneScript js = WrapperManager.GetJaneScript()) {
-				if (!Clipboard.ContainsText()) {
-					js.Log("クリップボードにテキストがありませんでした。");
-				}
-				string text = Clipboard.GetText();
-				Util.WriteToNewView(js, "クリップボード", "クリップボードをテキストとして書き出し", "クリップボードをテキストとして書き出し", false, false, (datout) => {
-					string[] lines = text.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
-					foreach (string line in lines) {
-						datout.WriteText(line);
-						datout.WriteBR();
-					}
-				});
+			JaneScript js = base.Host.JaneScript;
+			if (!Clipboard.ContainsText()) {
+				js.Log("クリップボードにテキストがありませんでした。");
 			}
+			string text = Clipboard.GetText();
+			Util.WriteToNewView(js, "クリップボード", "クリップボードをテキストとして書き出し", "クリップボードをテキストとして書き出し", false, false, (datout) => {
+				string[] lines = text.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+				foreach (string line in lines) {
+					datout.WriteText(line);
+					datout.WriteBR();
+				}
+			});
 		}
 		private void WriteClipboardTextAsHtml(MenuItem menu, PopupTargetInfo pti) {
-			using (JaneScript js = WrapperManager.GetJaneScript()) {
-				if (!Clipboard.ContainsText()) {
-					js.Log("クリップボードにテキストがありませんでした。");
-				}
-				string text = Clipboard.GetText();
-				Util.WriteToNewView(js, "last.dat", "クリップボードをHTMLとして書き出し", "クリップボードをHTMLとして書き出し", false, false, (datout) => {
-					datout.WriteHTML(text);
-				});
+			JaneScript js = base.Host.JaneScript;
+			if (!Clipboard.ContainsText()) {
+				js.Log("クリップボードにテキストがありませんでした。");
 			}
+			string text = Clipboard.GetText();
+			Util.WriteToNewView(js, "last.dat", "クリップボードをHTMLとして書き出し", "クリップボードをHTMLとして書き出し", false, false, (datout) => {
+				datout.WriteHTML(text);
+			});
 		}
 		private void WriteDraftsTitle(MenuItem menu, PopupTargetInfo pti) {
-			using (JaneScript js = WrapperManager.GetJaneScript()) {
-				Util.WriteToNewView(js, "草稿一覧", "草稿一覧", "草稿一覧", false, false, (datout) => {
-					this.FindAndWriteDrafts(js, datout, false);
-				});
-			}
+			JaneScript js = base.Host.JaneScript;
+			Util.WriteToNewView(js, "草稿一覧", "草稿一覧", "草稿一覧", false, false, (datout) => {
+				this.FindAndWriteDrafts(js, datout, false);
+			});
 		}
 		private void WriteDraftsContents(MenuItem menu, PopupTargetInfo pti) {
-			using (JaneScript js = WrapperManager.GetJaneScript()) {
-				Util.WriteToNewView(js, "草稿一覧", "草稿一覧", "草稿一覧", false, false, (datout) => {
-					this.FindAndWriteDrafts(js, datout, true);
-				});
-			}
+			JaneScript js = base.Host.JaneScript;
+			Util.WriteToNewView(js, "草稿一覧", "草稿一覧", "草稿一覧", false, false, (datout) => {
+				this.FindAndWriteDrafts(js, datout, true);
+			});
 		}
 		private void FindAndWriteDrafts(JaneScript js, DatOut datout, bool readDraftContents) {
 			datout.WriteText("草稿を検索しています。");

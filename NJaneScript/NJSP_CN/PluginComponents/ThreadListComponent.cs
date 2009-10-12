@@ -15,7 +15,7 @@ namespace NJSP_CN {
 		}
 
 		public void MenuHandler(Predicate<ViewItem> pred, MenuItem menu, PopupTargetInfo pti) {
-			using (JaneScript js = WrapperManager.GetJaneScript())
+			JaneScript js = base.Host.JaneScript;
 			using (ViewList vl = js.ViewList()){
 				List<TitleUriPair> pairs = new List<TitleUriPair>();
 				using (DisposableList<ViewItem> views = new DisposableList<ViewItem>(vl.GetEnumerable())) {

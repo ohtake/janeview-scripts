@@ -35,7 +35,7 @@ namespace NJSP_CN {
 			}
 		}
 		private void HandleTop10(MenuItem mi, PopupTargetInfo pti) {
-			using (JaneScript js = WrapperManager.GetJaneScript())
+			JaneScript js = base.Host.JaneScript;
 			using (ViewItem view = pti.PopupObject.ConvertToConcreteWrapper<ViewItem>())
 			using (ThreadItem thread = view.Thread()) {
 				if (null == thread) {
